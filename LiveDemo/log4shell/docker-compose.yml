@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  ldap:
+    image: iteratec.io/log4shell-ldap
+    ports:
+      - "8888:8888"
+      - "1389:1389"
+    networks:
+      deathstar:
+        ipv4_address: 172.16.238.10
+  app:
+    image: ghcr.io/christophetd/log4shell-vulnerable-app
+    ports:
+      - "8080:8080"
+    networks:
+      deathstar:
+        ipv4_address: 172.16.238.11
+networks:
+  deathstar:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24
+          gateway: 172.16.238.1
