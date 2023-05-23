@@ -1,0 +1,6 @@
+connections:
+    database:
+        user: admin
+        password: "!secret!password!"
+    accountService:
+        token: very_secret_token
